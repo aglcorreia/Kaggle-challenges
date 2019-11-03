@@ -284,57 +284,9 @@ ts_plot_random('air_temperature','site_id',site=True)
 ts_plot_random('meter_reading','primary_use',site=True)
 
 
-# # Check correlations
+# # Check correlations (TBD)
 
 # ## Meter readings across buildings in the same site_id
-
-# In[28]:
-
-
-check=df[['timestamp','building_id','meter_reading','meter']]
-
-
-# In[29]:
-
-
-check[train & (check['building_id']==7)]
-
-
-# In[25]:
-
-
-check[check['building_id']==7].groupby(['timestamp']).count()
-
-
-# In[23]:
-
-
-dup_ts = []
-for n in list(df['building_id'].unique()):
-    if test[test['building_id']==n].duplicated(subset='timestamp').sum()>0:
-        dup_ts.append(n)
-    else:
-        continue
-
-
-# In[26]:
-
-
-dup_ts[0:5]
-
-
-# In[55]:
-
-
-test[test['building_id']==13]['timestamp'].nunique()
-test[test['building_id']==13]['timestamp'].count()
-
-
-# In[16]:
-
-
-test.duplicated(subset='timestamp').sum()
-
 
 # In[ ]:
 
